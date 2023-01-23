@@ -1,0 +1,23 @@
+{
+  "settings": {
+    "baseurl": "https://www.saucedemo.com/"
+  },
+  "xpaths": {
+    "login": {
+      "username_input": "//input[@name='user-name']",
+      "password_input": "//input[@name='password']",
+      "login_button": "//input[@id='login-button']"
+    },
+    "shop": {
+      "add_cart_button": "//button[contains(@class,'btn_primary')]"
+    },
+    "cart": {
+      "go_to_cart_button": "//a[@class='shopping_cart_link']",
+      "checkout_button": "//button[@id='checkout']",
+      "form_input": "//div[@class='form_group']/input",
+      "continue_button": "//input[@id='continue']",
+      "displayed_price": "//div[@class='inventory_item_price']",
+      "item_total": "//div[@class='summary_subtotal_label']"
+    }
+  }
+}
