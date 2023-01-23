@@ -1,0 +1,2 @@
+Write an automated test that logs in to https://www.saucedemo.com and adds 3 random items to the basket.
+The test should check whether the amount calculated at checkout is correct
