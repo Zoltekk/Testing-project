@@ -1,6 +1,7 @@
 {
   "settings": {
-    "baseurl": "https://www.saucedemo.com/"
+    "base_url": "https://www.saucedemo.com/",
+    "implicit_wait_duration": 5
   },
   "xpaths": {
     "login": {

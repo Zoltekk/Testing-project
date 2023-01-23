@@ -1,10 +1,4 @@
-import random
-from selenium import webdriver
-from selenium.webdriver.common.keys import Keys
 from selenium.webdriver.common.by import By
-import time
-import pytest
-from pprint import pprint
 
 
 def test_pricecheck(get_xpaths, get_settings, get_driver):

@@ -3,9 +3,9 @@ import json
 from selenium import webdriver
 
 @pytest.fixture()
-def get_driver():
+def get_driver(get_settings):
     driver = webdriver.Firefox()
-    driver.implicitly_wait(5)
+    driver.implicitly_wait(get_settings["settings"]["implicit_wait_duration"])
     return driver
 
 @pytest.fixture()
