@@ -1,0 +1,4 @@
+Write an automated test that will run on the website and login with different credentials.
+Tests must be parameterized to check whether things work as they appear on successful and failed login attempts.
+Do all possible combinations at your disposal: good username, bad username, good password, bad password.
+You should also target illegal characters, blank form, too long password/username, etc.

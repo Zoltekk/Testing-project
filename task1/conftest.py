@@ -5,8 +5,9 @@ from selenium import webdriver
 @pytest.fixture()
 def get_driver(get_settings):
     driver = webdriver.Firefox()
-    driver.implicitly_wait(get_settings["settings"]["implicit_wait_duration"])
-    return driver
+    driver.implicitly_wait(get_settings["implicit_wait_duration"])
+    yield driver
+    driver.quit()
 
 @pytest.fixture()
 def get_settings():
@@ -19,3 +20,9 @@ def get_xpaths():
     with open("config.json") as f:
         data = json.load(f)
     return data["xpaths"]
+
+@pytest.fixture()
+def get_credentials():
+    with open("config.json") as f:
+        data = json.load(f)
+    return data["credentials"]
