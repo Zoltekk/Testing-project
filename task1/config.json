@@ -3,17 +3,6 @@
     "base_url": "https://www.saucedemo.com/",
     "implicit_wait_duration": 5
   },
-  "credentials": {
-    "usernames": {
-      "correct_user_1": "standard_user",
-      "correct_user_2": "locked_out_user",
-      "correct_user_3": "problem_user",
-      "correct_user_4": "performance_glitch_user"
-    },
-    "passwords": {
-      "correct_password_1": "secret_sauce"
-    }
-  },
   "xpaths": {
     "login": {
       "username_input": "//input[@name='user-name']",

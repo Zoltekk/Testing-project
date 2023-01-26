@@ -20,9 +20,3 @@ def get_xpaths():
     with open("config.json") as f:
         data = json.load(f)
     return data["xpaths"]
-
-@pytest.fixture()
-def get_credentials():
-    with open("config.json") as f:
-        data = json.load(f)
-    return data["credentials"]
