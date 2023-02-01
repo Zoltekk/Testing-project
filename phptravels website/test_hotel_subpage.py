@@ -48,13 +48,12 @@ def test_boundary(get_login, get_settings, get_xpaths, get_cred, rooms, adults, 
 
     for key, value in options.items():
         if value <= 0:
-            assert "usd" not in driver.current_url, f"Value is zero or negative, {key} is {value}"  # Back button displayed after searching for hotels
+            assert "usd" not in driver.current_url, f"Value is zero or negative, {key} is {value}"  # Checking for incorrect inputs and asserting the URL of the proceeding subpage
         elif rooms > 10:
             assert "usd" not in driver.current_url, f"Too many rooms, rooms : {rooms}"
         elif adults+childs < rooms:
             assert "usd" not in driver.current_url, f"Too few guests, adults :{adults}, children :{childs}"
         elif value != int(value):
             assert "usd" not in driver.current_url, f"Value is not an integer, value : {value}"
-        else:
-            back_button_text = driver.find_element(By.XPATH, "//a[@onclick='history.back()']").text
-            assert "Back" in back_button_text, f"Website didn't proceed, rooms:{rooms}, adults:{adults}, children{childs}"
+        else:                                                                                       # Checking for correct inputs and asserting the URL of the proceeding subpage
+            assert "usd" in driver.current_url, f"Website didn't proceed, rooms:{rooms}, adults:{adults}, children{childs}"

@@ -5,8 +5,6 @@ from selenium.webdriver.common.by import By
 from selenium.webdriver.common.action_chains import ActionChains
 from selenium.webdriver.support.wait import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
-# import time
-# from selenium.webdriver.common.keys import Keys
 
 @pytest.fixture()
 def get_driver(get_settings):
@@ -48,15 +46,3 @@ def get_login(get_driver, get_settings, get_xpaths, get_cred):
     login_button = WebDriverWait(driver, 10).until(EC.presence_of_element_located((By.XPATH, get_xpaths["login"]["login_button"])))
     ActionChains(driver).move_to_element(login_button).click(login_button).perform()
     return driver
-
-
-# @pytest.fixture()
-# def get_city(get_driver, get_xpaths):
-#     driver = get_driver
-#     city_box = WebDriverWait(driver, 10).until(EC.presence_of_element_located((By.XPATH, get_xpaths["subpages"]["city_box"])))
-#     ActionChains(driver).move_to_element(city_box).click(city_box).send_keys("Lon").perform()
-#
-#     time.sleep(3)
-#     city_choice = driver.find_element(By.XPATH, get_xpaths["subpages"]["city_choice"])
-#     ActionChains(driver).move_to_element(city_choice).send_keys(Keys.RETURN).perform()
-#     return driver
