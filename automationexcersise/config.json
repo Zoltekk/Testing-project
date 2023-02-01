@@ -1,0 +1,13 @@
+{
+  "settings": {
+    "base_url": "http://automationexercise.com",
+    "wait_duration": 5,
+    "email": "johnsmith123321@gmail.com",
+    "password": "johnsmith321123"
+  },
+  "xpaths": {
+    "login": {
+      "login_subpage": "//a[@href='/login']"
+    }
+  }
+}
