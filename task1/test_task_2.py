@@ -42,4 +42,3 @@ def test_login_correct(get_settings, get_driver, get_xpaths, username, passwd, e
         assert len(set(urls)) == 1 # Known bug
     else:
         raise("Case not covered!")
-        
