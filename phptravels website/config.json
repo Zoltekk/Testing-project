@@ -15,11 +15,8 @@
       "city_choice": "//ul[@id='select2-hotels_city-results']/li",
       "room_choice": "//a[@data-toggle='dropdown']",
       "room_inc": "//div[@class='roomInc']",
-      "submit_button": "//button[@id='submit']"
+      "submit_button": "//button[@id='submit']",
+      "room_elem": "//input[@id='%s']"
     }
-  },
-  "credentials": {
-    "login": "user@phptravels.com",
-    "password": "demouser"
   }
 }

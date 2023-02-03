@@ -17,18 +17,19 @@ def room_fillout(driver, get_xpaths, options):
     WebDriverWait(driver, 10).until(EC.presence_of_element_located((By.XPATH, get_xpaths["subpages"]["room_inc"])))
 
     for key, value in options.items():
-        driver.find_element(By.XPATH, "//input[@id='" + key + "']").clear()
-        driver.find_element(By.XPATH, "//input[@id='" + key + "']").send_keys(options[key])
+        room_elem = driver.find_element(By.XPATH, get_xpaths["subpages"]["room_elem"] % (key))
+
+        room_elem.clear()
+        room_elem.send_keys(options[key])
 
 
 @pytest.mark.parametrize("rooms", [-1, "abc", 0, 2, 20])
 @pytest.mark.parametrize("adults", [-1, "abc", 0, 2, 5000])
 @pytest.mark.parametrize("childs", [-1, "abc", 2, 5000])
-def test_boundary(get_login, get_settings, get_xpaths, get_cred, rooms, adults, childs):
+def test_boundary(get_login, get_settings, get_xpaths, rooms, adults, childs):
 
     driver = get_login
 
-    time.sleep(2)
     hotels_sub = driver.find_element(By.XPATH, get_xpaths["subpages"]["hotels_sub"])
     hotels_sub.click()
 
@@ -44,7 +45,6 @@ def test_boundary(get_login, get_settings, get_xpaths, get_cred, rooms, adults, 
 
     submit_button = driver.find_element(By.XPATH, get_xpaths["subpages"]["submit_button"])
     submit_button.click()
-    time.sleep(3)
 
     for key, value in options.items():
         if value <= 0:

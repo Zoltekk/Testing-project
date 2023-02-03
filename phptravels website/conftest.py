@@ -3,8 +3,16 @@ import json
 from selenium import webdriver
 from selenium.webdriver.common.by import By
 from selenium.webdriver.common.action_chains import ActionChains
-from selenium.webdriver.support.wait import WebDriverWait
-from selenium.webdriver.support import expected_conditions as EC
+import os
+from os.path import join, dirname
+from dotenv import load_dotenv
+
+dotenv_path = join(dirname(__file__), '.env')
+load_dotenv(dotenv_path)
+
+loginenv = os.environ.get("phptravellogin")
+passwordenv = os.environ.get("phptravelpass")
+
 
 @pytest.fixture()
 def get_driver(get_settings):
@@ -27,22 +35,15 @@ def get_xpaths():
 
 
 @pytest.fixture()
-def get_cred():
-    with open("config.json") as f:
-        data = json.load(f)
-    return data["credentials"]
-
-
-@pytest.fixture()
-def get_login(get_driver, get_settings, get_xpaths, get_cred):
+def get_login(get_driver, get_settings, get_xpaths):
     driver = get_driver
     driver.get(get_settings["base_url"])
     login = driver.find_element(By.XPATH, get_xpaths["login"]["username_input"])
-    login.send_keys(get_cred["login"])
+    login.send_keys(loginenv)
 
     password = driver.find_element(By.XPATH, get_xpaths["login"]["password_input"])
-    password.send_keys(get_cred["password"])
+    password.send_keys(passwordenv)
 
-    login_button = WebDriverWait(driver, 10).until(EC.presence_of_element_located((By.XPATH, get_xpaths["login"]["login_button"])))
+    login_button = driver.find_element(By.XPATH, get_xpaths["login"]["login_button"])
     ActionChains(driver).move_to_element(login_button).click(login_button).perform()
     return driver
