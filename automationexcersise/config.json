@@ -6,8 +6,16 @@
     "password": "johnsmith321123"
   },
   "xpaths": {
+    "home": {
+      "home_button": "//i[@class='fa fa-home']"
+    },
     "login": {
-      "login_subpage": "//a[@href='/login']"
+      "login_subpage": "//a[@href='/login']",
+      "logout": "//a[@href='/logout']",
+      "login_form": "//div[@class='login-form']",
+      "login_email": "//input[@data-qa='login-email']",
+      "login_password": "//input[@data-qa='login-password']",
+      "login_button": "//button[@data-qa='login-button']"
     }
   }
 }

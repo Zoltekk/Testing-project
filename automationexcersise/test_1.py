@@ -1,8 +1,3 @@
-from selenium.webdriver.common.by import By
-from selenium.webdriver.support.wait import WebDriverWait
-from selenium.webdriver.support import expected_conditions as EC
-import time
-
 '''
 Registering a user
 1. Launch browser
@@ -26,76 +21,10 @@ Registering a user
 '''
 
 
-def test_register(get_driver, get_settings, get_xpaths):
+def test_register(get_driver, get_settings, get_xpaths, get_signup, get_delete):
     driver = get_driver
     driver.get(get_settings["base_url"])
 
-    assert WebDriverWait(driver, 5).until(EC.presence_of_element_located((By.XPATH, "//i[@class='fa fa-home']")))
-    login_button = driver.find_element(By.XPATH, (get_xpaths["login"]["login_subpage"]))
-    login_button.click()
+    driver = get_signup
 
-    assert WebDriverWait(driver, 5).until(EC.presence_of_element_located((By.XPATH, "//div[@class='signup-form']")))
-    signup_name = driver.find_element(By.XPATH, "//input[@data-qa='signup-name']")
-    signup_email = driver.find_element(By.XPATH, "//input[@data-qa='signup-email']")
-    signup_button = driver.find_element(By.XPATH, "//button[@data-qa='signup-button']")
-
-    signup_name.send_keys("John Smith")
-    signup_email.send_keys(get_settings["email"])
-    signup_button.click()
-
-    assert WebDriverWait(driver, 5).until(EC.presence_of_element_located((By.XPATH, "//*[contains(text(), 'Enter Account "
-                                                                             "Information')]")))
-    title = driver.find_element(By.XPATH, "//input[@id='id_gender1']")
-    password = driver.find_element(By.XPATH, "//input[@id='password']")
-    days = driver.find_element(By.XPATH, "//select[@id='days']/option[@value='1']")
-    months= driver.find_element(By.XPATH, "//select[@id='months']/option[@value='1']")
-    years = driver.find_element(By.XPATH, "//select[@id='years']/option[@value='2000']")
-    newsletter = driver.find_element(By.XPATH, "//input[@id='newsletter']")
-    optin = driver.find_element(By.XPATH, "//input[@id='optin']")
-
-    title.click()
-    password.send_keys(get_settings["password"])
-    days.click()
-    months.click()
-    years.click()
-    newsletter.click()
-    optin.click()
-
-    firstname = driver.find_element(By.XPATH, "//input[@id='first_name']")
-    lastname = driver.find_element(By.XPATH, "//input[@id='last_name']")
-    company = driver.find_element(By.XPATH, "//input[@id='company']")
-    address1 = driver.find_element(By.XPATH, "//input[@id='address1']")
-    address2 = driver.find_element(By.XPATH, "//input[@id='address2']")
-    close_ad = driver.find_element(By.XPATH, "//div[@class='grippy-host']")
-    country = driver.find_element(By.XPATH, "//select[@id='country']/option[@value='United States']")
-    state = driver.find_element(By.XPATH, "//input[@id='state']")
-    city = driver.find_element(By.XPATH, "//input[@id='city']")
-    zipcode = driver.find_element(By.XPATH, "//input[@id='zipcode']")
-    mobile = driver.find_element(By.XPATH, "//input[@id='mobile_number']")
-    create_account = driver.find_element(By.XPATH, "//button[@data-qa='create-account']")
-
-    firstname.send_keys("John")
-    lastname.send_keys("Smith")
-    company.send_keys("The Smith Company")
-    address1.send_keys("123 Some Street")
-    address2.send_keys("Some District")
-    close_ad.click()
-    time.sleep(2)
-    country.click()
-    state.send_keys("Michigan")
-    city.send_keys("Detroit")
-    zipcode.send_keys("48126")
-    mobile.send_keys("(555) 555-1234")
-    create_account.click()
-
-    assert WebDriverWait(driver, 5).until(EC.presence_of_element_located((By.XPATH, "//h2[@class='title text-center']")))
-    continue_button = driver.find_element(By.XPATH, "//a[@class='btn btn-primary']")
-    continue_button.click()
-
-    assert WebDriverWait(driver, 5).until(EC.presence_of_element_located((By.XPATH, "//a[contains(text(),'Logged in as')]")))
-    delete_account = driver.find_element(By.XPATH, "//a[@href='/delete_account']")
-    delete_account.click()
-
-    assert WebDriverWait(driver, 5).until(EC.presence_of_element_located((By.XPATH, "//h2[@class='title text-center']")))
-    continue_button2 = driver.find_element(By.XPATH, "//a[@class='btn btn-primary']")
-    continue_button2.click()
+    driver = get_delete
