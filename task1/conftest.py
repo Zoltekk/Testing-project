@@ -20,3 +20,4 @@ def get_xpaths():
     with open("config.json") as f:
         data = json.load(f)
     return data["xpaths"]
+
