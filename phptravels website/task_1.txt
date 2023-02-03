@@ -1,4 +1,0 @@
-go to phptravels.net and register to get credentials.
-Log in and view the website from customers perspective.
-Focus on Hotels category:
-Analyse boundary values and write at lest 3 different automated and parameterized test cases.
