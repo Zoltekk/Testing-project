@@ -14,6 +14,7 @@ loginenv = os.environ.get("phptravellogin")
 passwordenv = os.environ.get("phptravelpass")
 
 
+
 @pytest.fixture()
 def get_driver(get_settings):
     driver = webdriver.Firefox()
