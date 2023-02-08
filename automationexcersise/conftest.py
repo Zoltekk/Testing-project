@@ -96,7 +96,7 @@ def get_signup(get_xpaths, get_driver, get_settings):
 @pytest.fixture()
 def get_logout(get_driver, get_settings, get_xpaths):
     driver = get_driver
-    driver.get(get_settings["base_url"])
+    # driver.get(get_settings["base_url"])
 
     assert driver.find_element(By.XPATH, "//a[contains(text(),'Logged in as')]")
     logout = driver.find_element(By.XPATH, get_xpaths["login"]["logout"])
