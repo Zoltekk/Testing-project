@@ -22,8 +22,6 @@ Registering a user
 
 
 def test_register(get_driver, get_settings, get_xpaths, get_signup, get_delete):
-    driver = get_driver
-    driver.get(get_settings["base_url"])
 
     driver = get_signup
 

@@ -1,3 +1,5 @@
+from selenium.webdriver.common.by import By
+
 '''
 1. Launch browser
 2. Navigate to url 'http://automationexercise.com'
@@ -7,11 +9,12 @@
 6. Enter correct email address and password
 7. Click 'login' button
 8. Verify that 'Logged in as username' is visible
-9. Click 'Delete Account' button
-10. Verify that 'ACCOUNT DELETED!' is visible
+9. Click 'Logout' button
+10. Verify that user is navigated to login page
 '''
 
 
-def test_login_success(get_settings, get_driver, get_xpaths, get_signup, get_logout, get_login, get_delete):
+def test_logout(get_driver, get_settings, get_xpaths, get_login, get_logout):
 
-    pass
+    driver = get_logout
+    assert driver.find_element(By.XPATH, get_xpaths["login"]["login_form"])

@@ -2,8 +2,8 @@
   "settings": {
     "base_url": "http://automationexercise.com",
     "wait_duration": 5,
-    "email": "johnsmith123321@gmail.com",
-    "password": "johnsmith321123"
+    "inc_email": "abcdef@abc.ab",
+    "inc_password": "abcdef123"
   },
   "xpaths": {
     "home": {
@@ -15,7 +15,8 @@
       "login_form": "//div[@class='login-form']",
       "login_email": "//input[@data-qa='login-email']",
       "login_password": "//input[@data-qa='login-password']",
-      "login_button": "//button[@data-qa='login-button']"
+      "login_button": "//button[@data-qa='login-button']",
+      "inc_credentials": "//p[@style='color: red;']"
     }
   }
 }
