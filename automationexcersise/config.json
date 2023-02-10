@@ -2,8 +2,6 @@
   "settings": {
     "base_url": "http://automationexercise.com",
     "wait_duration": 5,
-    "email": "johnsmith123321@gmail.com",
-    "password": "johnsmith321123",
     "inc_email": "abcdef@abc.ab",
     "inc_password": "abcdef123"
   },

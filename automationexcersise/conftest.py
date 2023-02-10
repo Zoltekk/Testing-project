@@ -3,6 +3,11 @@ import json
 from selenium import webdriver
 from selenium.webdriver.common.by import By
 import time
+import os
+from dotenv import load_dotenv, find_dotenv
+
+load_dotenv(find_dotenv())
+
 
 @pytest.fixture()
 def get_driver(get_settings):
@@ -94,9 +99,8 @@ def get_signup(get_xpaths, get_driver, get_settings):
 
 
 @pytest.fixture()
-def get_logout(get_driver, get_settings, get_xpaths):
+def get_logout(get_driver, get_xpaths):
     driver = get_driver
-    # driver.get(get_settings["base_url"])
 
     assert driver.find_element(By.XPATH, "//a[contains(text(),'Logged in as')]")
     logout = driver.find_element(By.XPATH, get_xpaths["login"]["logout"])
@@ -106,6 +110,9 @@ def get_logout(get_driver, get_settings, get_xpaths):
 
 @pytest.fixture()
 def get_login(get_driver, get_settings, get_xpaths):
+    automationlogin = os.environ.get("automationlogin")
+    automationpass = os.environ.get("automationpass")
+
     driver = get_driver
     driver.get(get_settings["base_url"])
 
@@ -115,10 +122,10 @@ def get_login(get_driver, get_settings, get_xpaths):
 
     assert driver.find_element(By.XPATH, get_xpaths["login"]["login_form"])
     login_email = driver.find_element(By.XPATH, get_xpaths["login"]["login_email"])
-    login_email.send_keys(get_settings["email"])
+    login_email.send_keys(automationlogin)
 
     login_password = driver.find_element(By.XPATH, get_xpaths["login"]["login_password"])
-    login_password.send_keys(get_settings["password"])
+    login_password.send_keys(automationpass)
 
     login_button = driver.find_element(By.XPATH, get_xpaths["login"]["login_button"])
     login_button.click()
