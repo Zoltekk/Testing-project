@@ -3,7 +3,6 @@ from locators import AutomationExerciseLocators, AELSLocators
 from selenium.webdriver.common.by import By
 import os
 from dotenv import load_dotenv, find_dotenv
-from pprint import pprint
 
 load_dotenv(find_dotenv())
 
@@ -34,10 +33,6 @@ def test_already_exist(get_driver):
 
     assert driver.find_element(By.XPATH, AELSLocators.signup_form)
 
-    pprint(email)
-    pprint(name)
     AELoginSignup.sign_up(email, name, driver)
 
     assert driver.find_element(By.XPATH, AELSLocators.signup_verify)
-
-

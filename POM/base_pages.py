@@ -1,8 +1,7 @@
 from selenium.webdriver.support import expected_conditions as EC
 from selenium.webdriver.common.by import By
 from selenium.webdriver.support.ui import WebDriverWait
-from locators import AELSLocators
-from pprint import pprint
+from locators import AELSLocators, AEContactLocators
 
 
 class AutomationExercise:
@@ -35,8 +34,6 @@ class AELoginSignup(AutomationExercise):
     @staticmethod
     def sign_up(email, name, driver):
         driver.get(AELoginSignup.base_url)
-        pprint(AELSLocators.signup_email_form)
-        pprint(email)
         AELoginSignup.enter_text(driver, AELSLocators.signup_email_form, email)
         AELoginSignup.enter_text(driver, AELSLocators.signup_name_form, name)
         AELoginSignup.click(driver, AELSLocators.signup_button)
@@ -47,3 +44,18 @@ class AELoginSignup(AutomationExercise):
         AELoginSignup.enter_text(driver, AELSLocators.login_email_form, email)
         AELoginSignup.enter_text(driver, AELSLocators.login_pass_form, password)
         AELoginSignup.click(driver, AELSLocators.login_button)
+
+
+class AEContactUs(AutomationExercise):
+
+    @staticmethod
+    def fill_out(name, email, subject, message, driver):
+        AEContactUs.enter_text(driver, AEContactLocators.contact_name, name)
+        AEContactUs.enter_text(driver, AEContactLocators.contact_email, email)
+        AEContactUs.enter_text(driver, AEContactLocators.contact_subject, subject)
+        AEContactUs.enter_text(driver, AEContactLocators.contact_message, message)
+
+    @staticmethod
+    def upload_and_submit(path, driver):
+        AEContactUs.enter_text(driver, AEContactLocators.contact_upload, path)
+        AEContactUs.click(driver, AEContactLocators.contact_submit)
