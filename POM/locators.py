@@ -9,6 +9,7 @@ class AutomationExerciseLocators:
     subscribe_input = "//input[@id='susbscribe_email']"
     subscribe_button = "//button[@id='subscribe']"
     subscribe_success = "//div[@class='alert-success alert']"
+    cart_button = "//a[@href='/products']/following::a[1]"
 
 class AELSLocators(AutomationExerciseLocators):
     login_email_form = "//input[@data-qa='login-email']"
@@ -46,3 +47,18 @@ class AEProductsLocators(AutomationExerciseLocators):
     product_search = "//input[@id='search_product']"
     product_search_button = "//button[@id='submit_search']"
     product_search_verify = "//h2[@class='title text-center']"
+    product_bluetop_1 = "//section[2]/div[1]/div[1]/div[2]/div[1]/div[2]/div[1]/div[1]/div[1]/a"
+    product_mentshirt_1 = "//section[2]/div[1]/div[1]/div[2]/div[1]/div[3]/div[1]/div[1]/div[1]/a"
+    continue_button = "//button[@class='btn btn-success close-modal btn-block']"
+    view_cart = "//u"
+
+
+class AECartLocators(AutomationExerciseLocators):
+    cart_item_1 = "//a[@href='/product_details/1']"
+    cart_item_2 = "//a[@href='/product_details/2']"
+    item_1_price = "//tr[@id='product-1']/td[@class='cart_price']//p"
+    item_2_price = "//tr[@id='product-2']/td[@class='cart_price']//p"
+    item_1_quantity = "//tr[@id='product-1']//button[@class='disabled']"
+    item_2_quantity = "//tr[@id='product-2']//button[@class='disabled']"
+    item_1_total = "//tr[@id='product-1']//p[@class='cart_total_price']"
+    item_2_total = "//tr[@id='product-2']//p[@class='cart_total_price']"

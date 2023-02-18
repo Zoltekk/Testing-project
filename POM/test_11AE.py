@@ -10,20 +10,24 @@ load_dotenv(find_dotenv())
 1. Launch browser
 2. Navigate to url 'http://automationexercise.com'
 3. Verify that home page is visible successfully
-4. Scroll down to footer
-5. Verify text 'SUBSCRIPTION'
-6. Enter email address in input and click arrow button
-7. Verify success message 'You have been successfully subscribed!' is visible
+4. Click 'Cart' button
+5. Scroll down to footer
+6. Verify text 'SUBSCRIPTION'
+7. Enter email address in input and click arrow button
+8. Verify success message 'You have been successfully subscribed!' is visible
 '''
 
 addon_path = os.environ.get("adblock_plus")
 
-def test_subscription(get_driver):
+def test_subscription_cart(get_driver):
     driver = get_driver
     driver.install_addon(addon_path, temporary=True)
     driver.get(AutomationExercise.base_url)
 
     assert driver.find_element(By.XPATH, AutomationExerciseLocators.home_icon)
+
+    cart_button = driver.find_element(By.XPATH, AutomationExerciseLocators.cart_button)
+    cart_button.click()
 
     driver.execute_script("window.scrollTo(0, document.body.scrollHeight);")
 
@@ -34,6 +38,3 @@ def test_subscription(get_driver):
     AESubscribe.subscribe_click(driver)
 
     assert driver.find_element(By.XPATH, AutomationExerciseLocators.subscribe_success)
-
-
-
