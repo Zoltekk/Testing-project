@@ -23,17 +23,18 @@ def test_subscription(get_driver):
     driver.install_addon(addon_path, temporary=True)
     driver.get(AutomationExercise.base_url)
 
-    assert driver.find_element(By.XPATH, AutomationExerciseLocators.home_icon)
+    assert driver.find_element(By.XPATH, AutomationExerciseLocators.home_icon), "Home page not loaded"
 
     driver.execute_script("window.scrollTo(0, document.body.scrollHeight);")
 
-    assert driver.find_element(By.XPATH, AutomationExerciseLocators.subscribe_verify)
+    assert driver.find_element(By.XPATH, AutomationExerciseLocators.subscribe_verify), "SUBSCRIPTION text not visible"
 
     AESubscribe.subscribe_fill_out(driver)
 
     AESubscribe.subscribe_click(driver)
 
-    assert driver.find_element(By.XPATH, AutomationExerciseLocators.subscribe_success)
+    assert driver.find_element(By.XPATH, AutomationExerciseLocators.subscribe_success), "'Subscribe success' message not " \
+                                                                                        "visible"
 
 
 

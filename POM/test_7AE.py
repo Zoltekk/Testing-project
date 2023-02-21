@@ -15,9 +15,10 @@ def test_testcase(get_driver):
     driver = get_driver
     driver.get(AutomationExercise.base_url)
 
-    assert driver.find_element(By.XPATH, AutomationExerciseLocators.home_icon)
+    assert driver.find_element(By.XPATH, AutomationExerciseLocators.home_icon), "Home page not loaded"
 
     test_cases_button = driver.find_element(By.XPATH, AutomationExerciseLocators.test_cases_button)
     test_cases_button.click()
 
-    assert driver.find_element(By.XPATH, AutomationExerciseLocators.test_cases_verify)
+    assert driver.find_element(By.XPATH, AutomationExerciseLocators.test_cases_verify), "Couldn't navigate to the " \
+                                                                                        "test cases page"

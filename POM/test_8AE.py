@@ -25,20 +25,20 @@ def test_product_list(get_driver):
     driver.install_addon(addon_path, temporary=True)
     driver.get(AutomationExercise.base_url)
 
-    assert driver.find_element(By.XPATH, AutomationExerciseLocators.home_icon)
+    assert driver.find_element(By.XPATH, AutomationExerciseLocators.home_icon), "Home page not loaded"
 
     products_button = driver.find_element(By.XPATH, AutomationExerciseLocators.products_subpage)
     products_button.click()
 
-    assert driver.find_element(By.XPATH, AEProductsLocators.products_verify)
-    assert driver.find_element(By.XPATH, AEProductsLocators.products_list)
+    assert driver.find_element(By.XPATH, AEProductsLocators.products_verify), "Couldn't navigate to ALL PRODUCTS"
+    assert driver.find_element(By.XPATH, AEProductsLocators.products_list), "Product list is not visible"
 
     product_view_1_button = driver.find_element(By.XPATH, AEProductsLocators.product_view_1)
     product_view_1_button.click()
 
-    assert "product_details" in driver.current_url
+    assert "product_details" in driver.current_url, "Didn't land on product details page"
 
     product_verify_list = [AEProductsLocators.product_name, AEProductsLocators.product_category, AEProductsLocators.product_price,
                            AEProductsLocators.product_availability, AEProductsLocators.product_condition, AEProductsLocators.product_brand]
     for item in product_verify_list:
-        assert driver.find_element(By.XPATH, item)
+        assert driver.find_element(By.XPATH, item), f"Product detail not visible, {item}"

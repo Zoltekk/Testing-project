@@ -24,12 +24,12 @@ def test_product_search(get_driver):
     driver.install_addon(addon_path, temporary=True)
     driver.get(AutomationExercise.base_url)
 
-    assert driver.find_element(By.XPATH, AutomationExerciseLocators.home_icon)
+    assert driver.find_element(By.XPATH, AutomationExerciseLocators.home_icon), "Home page not loaded"
 
     products_button = driver.find_element(By.XPATH, AutomationExerciseLocators.products_subpage)
     products_button.click()
 
-    assert driver.find_element(By.XPATH, AEProductsLocators.products_verify)
+    assert driver.find_element(By.XPATH, AEProductsLocators.products_verify), "Couldn't navigate to ALL PRODUCTS"
 
     product_search = driver.find_element(By.XPATH, AEProductsLocators.product_search)
     product_search.send_keys("Winter Top")
@@ -37,5 +37,6 @@ def test_product_search(get_driver):
     product_search_button = driver.find_element(By.XPATH, AEProductsLocators.product_search_button)
     product_search_button.click()
 
-    assert driver.find_element(By.XPATH, AEProductsLocators.product_search_verify)
-    assert "Winter Top" in driver.find_element(By.XPATH, "//div[@class='productinfo text-center']/p").text
+    assert driver.find_element(By.XPATH, AEProductsLocators.product_search_verify), "'SEARCHED PRODUCTS' not visible"
+    assert "Winter Top" in driver.find_element(By.XPATH, AEProductsLocators.products_search_verify_2).text, "Searched " \
+                                                                                        "item not visible in results"
