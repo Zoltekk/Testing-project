@@ -49,6 +49,7 @@ class AEProductsLocators(AutomationExerciseLocators):
     product_search_verify = "//h2[@class='title text-center']"
     product_bluetop_1 = "//section[2]/div[1]/div[1]/div[2]/div[1]/div[2]/div[1]/div[1]/div[1]/a"
     product_mentshirt_1 = "//section[2]/div[1]/div[1]/div[2]/div[1]/div[3]/div[1]/div[1]/div[1]/a"
+    products_search_verify_2 = "//div[@class='productinfo text-center']/p"
     continue_button = "//button[@class='btn btn-success close-modal btn-block']"
     view_cart = "//u"
 

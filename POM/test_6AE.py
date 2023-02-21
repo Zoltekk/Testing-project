@@ -29,12 +29,12 @@ def test_contact_form(get_driver):
     driver = get_driver
     driver.get(AutomationExercise.base_url)
 
-    assert driver.find_element(By.XPATH, AutomationExerciseLocators.home_icon)
+    assert driver.find_element(By.XPATH, AutomationExerciseLocators.home_icon), "Home page not loaded"
 
     contact_button = driver.find_element(By.XPATH, AutomationExerciseLocators.contact_button)
     contact_button.click()
 
-    assert driver.find_element(By.XPATH, AEContactLocators.contact_verify)
+    assert driver.find_element(By.XPATH, AEContactLocators.contact_verify), "'GET IN TOUCH' is not visible"
 
     AEContactUs.fill_out(name, email, "This is a subject", "This is a message", driver)
 
@@ -42,9 +42,10 @@ def test_contact_form(get_driver):
 
     driver.switch_to.alert.accept()
 
-    assert driver.find_element(By.XPATH, AEContactLocators.contact_success)
+    assert driver.find_element(By.XPATH, AEContactLocators.contact_success), "'Success! Your details have been " \
+                                                                             "submitted successfully.' is not visible"
 
     contact_home_button = driver.find_element(By.XPATH, AEContactLocators.contact_home)
     contact_home_button.click()
 
-    assert driver.find_element(By.XPATH, AutomationExerciseLocators.home_icon)
+    assert driver.find_element(By.XPATH, AutomationExerciseLocators.home_icon), "Didn't land back on the home page"

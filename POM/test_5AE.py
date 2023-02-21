@@ -26,13 +26,13 @@ def test_already_exist(get_driver):
     driver = get_driver
     driver.get(AutomationExercise.base_url)
 
-    assert driver.find_element(By.XPATH, AutomationExerciseLocators.home_icon)
+    assert driver.find_element(By.XPATH, AutomationExerciseLocators.home_icon), "Home page not loaded"
 
     login_button = driver.find_element(By.XPATH, AutomationExerciseLocators.login_subpage)
     login_button.click()
 
-    assert driver.find_element(By.XPATH, AELSLocators.signup_form)
+    assert driver.find_element(By.XPATH, AELSLocators.signup_form), "'New User Signup!' is not visible"
 
     AELoginSignup.sign_up(email, name, driver)
 
-    assert driver.find_element(By.XPATH, AELSLocators.signup_verify)
+    assert driver.find_element(By.XPATH, AELSLocators.signup_verify), "'Email Address already exists!' is not visible"

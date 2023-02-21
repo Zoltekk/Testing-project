@@ -88,4 +88,5 @@ class AECart(AutomationExercise):
         quantity = cart_num_regex.findall(driver.find_element(By.XPATH, quantity_locator).text)
         total = cart_num_regex.findall(driver.find_element(By.XPATH, total_locator).text)
 
-        assert int(price[0]) * int(quantity[0]) == int(total[0])
+        assert float(price[0]) * float(quantity[0]) == float(total[0]), f"Total price does not match input values. " \
+                                                                  f"Price:{price}, Quantity:{quantity}, Total:{total}"

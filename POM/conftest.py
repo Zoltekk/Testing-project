@@ -10,8 +10,8 @@ def get_driver():
     driver.close()
 
 
-def install_addon(self, path, temporary=None):
+def install_addon(driver, path, temporary=None):
     payload = {"path": path}
     if temporary:
         payload["temporary"] = temporary
-    return self.execute("INSTALL_ADDON", payload)["value"]
+    return driver.execute("INSTALL_ADDON", payload)["value"]
