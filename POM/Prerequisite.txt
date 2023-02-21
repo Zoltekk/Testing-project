@@ -1,3 +1,0 @@
-The automationexercise website is riddled with ads. It's necessary to run the "install_addon" function (located in
-conftest.py), otherwise some tests will fail. It accepts 2 arguments, the first is a path to a .xpi file of AdblockPlus
-and the second is "temporary=True" in order to install it only for that specific instance of the test.
