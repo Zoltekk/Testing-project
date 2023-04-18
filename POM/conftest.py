@@ -7,7 +7,7 @@ def get_driver():
     driver = webdriver.Firefox()
     driver.implicitly_wait(5)
     yield driver
-    driver.close()
+    driver.quit()
 
 
 def install_addon(driver, path, temporary=None):

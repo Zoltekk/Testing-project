@@ -1,6 +1,6 @@
 class AutomationExerciseLocators:
     home_icon = "//i[@class='fa fa-home']"
-    login_subpage = "//a[@href='/login']"
+    login_subpage = "//li/a[@href='/login']"
     contact_button = "//a[@href='/contact_us']"
     test_cases_button = "//a[contains(text(), 'Test Cases')]"
     test_cases_verify = "//b[contains(text(), 'Test Cases')]"
@@ -10,6 +10,14 @@ class AutomationExerciseLocators:
     subscribe_button = "//button[@id='subscribe']"
     subscribe_success = "//div[@class='alert-success alert']"
     cart_button = "//a[@href='/products']/following::a[1]"
+    view_product_blue_top = "//a[@href='/product_details/1']"
+    add_to_cart_button = "//img[@src='/get_product_picture/1']//following-sibling::a"
+    logged_in = "//a[contains(text(),'Logged in as')]"
+    product_name_verify = "//img[@src='/get_product_picture/1']//following-sibling::p"
+    delete_account = "//a[@href='/delete_account']"
+    delete_verify = "//h2[@class='title text-center']"
+    delete_continue = "//a[@class='btn btn-primary']"
+
 
 class AELSLocators(AutomationExerciseLocators):
     login_email_form = "//input[@data-qa='login-email']"
@@ -20,6 +28,31 @@ class AELSLocators(AutomationExerciseLocators):
     signup_name_form = "//input[@data-qa='signup-name']"
     signup_button = "//button[@data-qa='signup-button']"
     signup_verify = "//*[contains(text(), 'Email Address already exist!')]"
+
+
+class AESignup(AutomationExerciseLocators):
+    signup2_verify = "//*[contains(text(), 'Enter Account Information')]"
+    signup2_title = "//input[@id='id_gender1']"
+    signup2_days = "//select[@id='days']/option[@value='1']"
+    signup2_months = "//select[@id='months']/option[@value='1']"
+    signup2_years = "//select[@id='years']/option[@value='2000']"
+    signup2_newsletter = "//input[@id='newsletter']"
+    signup2_optin = "//input[@id='optin']"
+    signup2_password = "//input[@id='password']"
+    signup2_firstname = "//input[@id='first_name']"
+    signup2_lastname = "//input[@id='last_name']"
+    signup2_company = "//input[@id='company']"
+    signup2_address1 = "//input[@id='address1']"
+    signup2_address2 = "//input[@id='address2']"
+    signup2_state = "//input[@id='state']"
+    signup2_city = "//input[@id='city']"
+    signup2_zipcode = "//input[@id='zipcode']"
+    signup2_mobile = "//input[@id='mobile_number']"
+    signup2_close_ad = "//div[@class='grippy-host']"
+    signup2_country = "//select[@id='country']/option[@value='United States']"
+    signup2_create_account = "//button[@data-qa='create-account']"
+    signup2_verify2 = "//h2[@class='title text-center']"
+    signup2_continue_button = "//a[@class='btn btn-primary']"
 
 
 class AEContactLocators(AutomationExerciseLocators):
@@ -52,6 +85,9 @@ class AEProductsLocators(AutomationExerciseLocators):
     products_search_verify_2 = "//div[@class='productinfo text-center']/p"
     continue_button = "//button[@class='btn btn-success close-modal btn-block']"
     view_cart = "//u"
+    product_quantity = "//input[@id='quantity']"
+    product_add_to_cart = "//button[@class='btn btn-default cart']"
+    product_view_cart_center = "//p/a[@href='/view_cart']"
 
 
 class AECartLocators(AutomationExerciseLocators):
@@ -63,3 +99,16 @@ class AECartLocators(AutomationExerciseLocators):
     item_2_quantity = "//tr[@id='product-2']//button[@class='disabled']"
     item_1_total = "//tr[@id='product-1']//p[@class='cart_total_price']"
     item_2_total = "//tr[@id='product-2']//p[@class='cart_total_price']"
+    checkout_button = "//a[@class='btn btn-default check_out']"
+    register_login_button = "//p/a[@href='/login']"
+    continue_cart_button = "//button[@class='btn btn-success close-checkout-modal btn-block']"
+    delivery_verify = "//ul[@id='address_delivery']/descendant::li[2]"
+    order_description = "//textarea[@class='form-control']"
+    place_order_button = "//a[@class='btn btn-default check_out']"
+    card_name = "//input[@class='form-control']"
+    card_number = "//input[@class='form-control card-number']"
+    card_cvc = "//input[@class='form-control card-cvc']"
+    card_month = "//input[@class='form-control card-expiry-month']"
+    card_year = "//input[@class='form-control card-expiry-year']"
+    pay_button = "//button[@id='submit']"
+    purchase_verify = "//h2[@class='title text-center']"
