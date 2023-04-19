@@ -2,8 +2,11 @@ from selenium.webdriver.support import expected_conditions as EC
 from selenium.webdriver.common.by import By
 from selenium.webdriver.support.ui import WebDriverWait
 from locators import AELSLocators, AEContactLocators, AutomationExerciseLocators, AESignup, AECartLocators
-import time
 import re
+import os
+from dotenv import load_dotenv, find_dotenv
+
+load_dotenv(find_dotenv())
 
 
 class AutomationExercise:
@@ -35,32 +38,34 @@ class AELoginSignup(AutomationExercise):
 
     @staticmethod
     def sign_up(email, name, driver):
-        AELoginSignup.enter_text(driver, AELSLocators.signup_email_form, email)
-        AELoginSignup.enter_text(driver, AELSLocators.signup_name_form, name)
+        cred_dict = {AELSLocators.signup_email_form: email, AELSLocators.signup_name_form: name}
+        for key, value in cred_dict.items():
+            temp_variable = os.environ.get(value)
+            AELoginSignup.enter_text(driver, key, temp_variable)
         AELoginSignup.click(driver, AELSLocators.signup_button)
 
     @staticmethod
     def sign_up_complete(password, firstname, lastname, company, address1, address2, state, city, zipcode, mobile, driver):
-        assert driver.find_element(By.XPATH, AESignup.signup2_verify)
+        assert driver.find_element(By.XPATH, AESignup.signup2_verify), "Couldn't proceed to sign-up details"
 
-        AELoginSignup.enter_text(driver, AESignup.signup2_password, password)
+        test_password = os.environ.get(password)
+        AELoginSignup.enter_text(driver, AESignup.signup2_password, test_password)
 
         signup_list = [AESignup.signup2_title, AESignup.signup2_days, AESignup.signup2_months, AESignup.signup2_years,
                        AESignup.signup2_newsletter, AESignup.signup2_optin]
         for option in signup_list:
             AELoginSignup.click(driver, option)
 
-        # time.sleep(1)
-        # AELoginSignup.click(driver, AESignup.signup2_close_ad)
-        # time.sleep(2)
         AELoginSignup.click(driver, AESignup.signup2_country)
 
         signup_list2 = {AESignup.signup2_firstname: firstname, AESignup.signup2_lastname: lastname,
                         AESignup.signup2_company: company, AESignup.signup2_address1: address1,
                         AESignup.signup2_address2: address2, AESignup.signup2_state: state,
                         AESignup.signup2_city: city, AESignup.signup2_zipcode: zipcode, AESignup.signup2_mobile: mobile}
+
         for key, value in signup_list2.items():
-            AELoginSignup.enter_text(driver, key, value)
+            temp_variable = os.environ.get(value)
+            AELoginSignup.enter_text(driver, key, temp_variable)
 
         AELoginSignup.click(driver, AESignup.signup2_create_account)
 
@@ -117,9 +122,9 @@ class AECart(AutomationExercise):
 
     @staticmethod
     def card_info(name, number, cvc, month, year, driver):
-        AECart.enter_text(driver, AECartLocators.card_name, name)
-        AECart.enter_text(driver, AECartLocators.card_number, number)
-        AECart.enter_text(driver, AECartLocators.card_cvc, cvc)
-        AECart.enter_text(driver, AECartLocators.card_month, month)
-        AECart.enter_text(driver, AECartLocators.card_year, year)
+        info = {AECartLocators.card_name: name, AECartLocators.card_number: number, AECartLocators.card_cvc: cvc,
+                AECartLocators.card_month: month, AECartLocators.card_year: year}
+        for key, value in info.items():
+            temp_variable = os.environ.get(value)
+            AECart.enter_text(driver, key, temp_variable)
         AECart.click(driver, AECartLocators.pay_button)
